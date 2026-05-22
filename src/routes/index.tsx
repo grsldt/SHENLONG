@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Shenlong Market 神龙 — sourcing chinois premium. Catalogue direct fournisseur, sneakers, électronique, accessoires. Commande via WhatsApp.",
+          "Shenlong Market 神龙 — premium China sourcing. Direct supplier catalog, sneakers, electronics, accessories. Order via WhatsApp.",
       },
     ],
   }),
