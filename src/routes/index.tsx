@@ -260,8 +260,8 @@ function Index() {
               </h2>
               <p className="text-sm lg:text-base text-muted-foreground max-w-lg mb-6">
                 {currentBrand
-                  ? `Direct procurement pipeline · ${sorted.length} référence(s) en stock.`
-                  : "Procurement direct depuis nos hubs Guangzhou & Yiwu. Cliquez n'importe quel produit pour commander via WhatsApp."}
+                  ? `Direct procurement pipeline · ${sorted.length} reference(s) in stock.`
+                  : "Direct procurement from our Guangzhou & Yiwu hubs. Click any product to order via WhatsApp."}
               </p>
               <div className="flex flex-wrap items-center gap-3">
                 <a
@@ -270,10 +270,10 @@ function Index() {
                   rel="noopener"
                   className="bg-accent text-accent-foreground px-6 py-3 text-xs font-bold uppercase tracking-widest rounded-md hover:brightness-110 transition flex items-center gap-2"
                 >
-                  <MessageCircle size={14} /> Contacter un agent
+                  <MessageCircle size={14} /> Contact an agent
                 </a>
                 <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-                  · Réponse &lt; 10 min
+                  · Reply &lt; 10 min
                 </span>
               </div>
             </div>
