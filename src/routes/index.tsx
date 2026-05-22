@@ -194,13 +194,18 @@ function Index() {
           </section>
         </nav>
 
-        <div className="p-4 border-t border-border">
+        <div className="p-4 border-t border-border space-y-2">
           <div className="bg-surface-muted border border-border p-3 rounded-lg">
             <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest mb-1">Live Status</p>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-xs font-medium">Guangzhou Hub · Shipping</span>
             </div>
+          </div>
+          <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+            <span>© SHENLONG 神龙</span>
+            <a href="/auth" className="hover:text-accent">Contact</a>
+            <a href="/auth?admin=1" className="hover:text-accent">Admin</a>
           </div>
         </div>
       </aside>
