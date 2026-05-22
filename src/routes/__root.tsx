@@ -76,7 +76,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Shenlong Market 神龙 — sourcing chinois direct fournisseur. Sneakers, électronique, accessoires. Commande via WhatsApp.",
+          "Shenlong Market 神龙 — direct China supplier sourcing. Sneakers, electronics, accessories. Order via WhatsApp.",
       },
       { property: "og:title", content: "Shenlong Market 神龙市场" },
       { property: "og:description", content: "Precision wholesale from Guangzhou & Yiwu hubs." },

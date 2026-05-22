@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Shenlong Market 神龙 — sourcing chinois premium. Catalogue direct fournisseur, sneakers, électronique, accessoires. Commande via WhatsApp.",
+          "Shenlong Market 神龙 — premium China sourcing. Direct supplier catalog, sneakers, electronics, accessories. Order via WhatsApp.",
       },
     ],
   }),
@@ -194,13 +194,18 @@ function Index() {
           </section>
         </nav>
 
-        <div className="p-4 border-t border-border">
+        <div className="p-4 border-t border-border space-y-2">
           <div className="bg-surface-muted border border-border p-3 rounded-lg">
             <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest mb-1">Live Status</p>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-xs font-medium">Guangzhou Hub · Shipping</span>
             </div>
+          </div>
+          <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+            <span>© SHENLONG 神龙</span>
+            <a href="/auth" className="hover:text-accent">Contact</a>
+            <a href="/auth?admin=1" className="hover:text-accent">Admin</a>
           </div>
         </div>
       </aside>
@@ -260,8 +265,8 @@ function Index() {
               </h2>
               <p className="text-sm lg:text-base text-muted-foreground max-w-lg mb-6">
                 {currentBrand
-                  ? `Direct procurement pipeline · ${sorted.length} référence(s) en stock.`
-                  : "Procurement direct depuis nos hubs Guangzhou & Yiwu. Cliquez n'importe quel produit pour commander via WhatsApp."}
+                  ? `Direct procurement pipeline · ${sorted.length} reference(s) in stock.`
+                  : "Direct procurement from our Guangzhou & Yiwu hubs. Click any product to order via WhatsApp."}
               </p>
               <div className="flex flex-wrap items-center gap-3">
                 <a
@@ -270,10 +275,10 @@ function Index() {
                   rel="noopener"
                   className="bg-accent text-accent-foreground px-6 py-3 text-xs font-bold uppercase tracking-widest rounded-md hover:brightness-110 transition flex items-center gap-2"
                 >
-                  <MessageCircle size={14} /> Contacter un agent
+                  <MessageCircle size={14} /> Contact an agent
                 </a>
                 <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-                  · Réponse &lt; 10 min
+                  · Reply &lt; 10 min
                 </span>
               </div>
             </div>
