@@ -21,11 +21,11 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Shenlong Market — Precision Wholesale 神龙市场" },
+      { title: "Shenlong Market — Precision Wholesale 神龍市場" },
       {
         name: "description",
         content:
-          "Shenlong Market 神龙 — premium China sourcing. Direct supplier catalog, sneakers, electronics, accessories. Order via WhatsApp.",
+          "Shenlong Market 神龍 — premium Japan-based sourcing. Direct supplier catalog, sneakers, electronics, accessories. Order via WhatsApp.",
       },
     ],
   }),
@@ -128,7 +128,7 @@ function Index() {
         <div className="p-6 border-b border-border flex items-center justify-between">
           <div>
             <h1 className="text-xl font-extrabold tracking-tight flex items-center gap-2">
-              <span className="bg-foreground text-background px-1.5 py-0.5 rounded text-sm">神龙</span>
+              <span className="bg-foreground text-background px-1.5 py-0.5 rounded text-sm">神龍</span>
               <span>SHENLONG</span>
             </h1>
             <p className="text-[10px] font-mono text-muted-foreground tracking-widest mt-1">PRECISION WHOLESALE</p>
@@ -203,7 +203,7 @@ function Index() {
             </div>
           </div>
           <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
-            <span>© SHENLONG 神龙</span>
+            <span>© SHENLONG 神龍</span>
             <a href="/auth" className="hover:text-accent">Contact</a>
             <a href="/auth?admin=1" className="hover:text-accent">Admin</a>
           </div>
