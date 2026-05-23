@@ -64,7 +64,7 @@ export const ProductModal = ({ product, brandName, categoryName, settings, onClo
   const order = () => {
     if (sizes.length > 0 && !size) return toast.error("Please choose a size first");
     if (colors.length > 0 && !color) return toast.error("Please choose a color first");
-    const lines = ["Hi SHENLONG 神龙,", "", "I'd like to order:", `• ${brandName ? brandName + " — " : ""}${product.title}`];
+    const lines = ["Hi SHENLONG 神龍,", "", "I'd like to order:", `• ${brandName ? brandName + " — " : ""}${product.title}`];
     if (color) lines.push(`• Color: ${color}`);
     if (size) lines.push(`• Size: ${size}`);
     if (!product.whatsapp_only && product.price) lines.push(`• Price: ${formatPrice(product.price, product.currency)}`);
