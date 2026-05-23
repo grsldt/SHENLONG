@@ -348,7 +348,7 @@ function Index() {
         </div>
 
         {/* Filter bar */}
-        <div className="sticky top-14 lg:top-14 z-20 bg-surface-muted/95 backdrop-blur border-y border-border px-4 lg:px-8 py-3 flex flex-wrap gap-2 items-center">
+        <div className="lg:sticky lg:top-14 z-10 bg-surface-muted/95 backdrop-blur border-y border-border px-4 lg:px-8 py-3 flex flex-wrap gap-2 items-center">
           <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-muted-foreground mr-2">
             Sort
           </span>
