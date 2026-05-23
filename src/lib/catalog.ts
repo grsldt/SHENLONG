@@ -26,9 +26,14 @@ export type SiteSettings = {
   image_base_url: string;
 };
 
+// Shenlong Market — Japan agent. We share the catalog DB with Dragon Market
+// but route all WhatsApp orders to our own Japanese line.
+export const SHENLONG_WHATSAPP = "+81 80-2143-5186";
+
 export async function fetchSettings(): Promise<SiteSettings> {
   const { data } = await supabase.from("site_settings").select("*").eq("id", 1).maybeSingle();
-  return (data as SiteSettings | null) ?? { whatsapp_number: "+12532237370", tracking_url: "https://neocartrige.com", image_base_url: "" };
+  const base = (data as SiteSettings | null) ?? { whatsapp_number: SHENLONG_WHATSAPP, tracking_url: "https://neocartrige.com", image_base_url: "" };
+  return { ...base, whatsapp_number: SHENLONG_WHATSAPP };
 }
 
 export async function fetchBrands(): Promise<Brand[]> {

@@ -41,7 +41,7 @@ export const CartDrawer = ({ open, onClose, settings, brandLookup }: Props) => {
 
   const orderAll = () => {
     if (cart.items.length === 0) return;
-    const lines = ["Hi SHENLONG 神龙,", "", `I'd like to order ${cart.totalQty} item(s):`];
+    const lines = ["Hi SHENLONG 神龍,", "", `I'd like to order ${cart.totalQty} item(s):`];
     cart.items.forEach((line, i) => {
       const p = products[line.id];
       const brand = p ? brandLookup[p.brand_id] ?? "" : "";
