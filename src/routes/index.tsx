@@ -199,7 +199,7 @@ function Index() {
             <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest mb-1">Live Status</p>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-xs font-medium">Guangzhou Hub · Shipping</span>
+              <span className="text-xs font-medium">Tokyo Hub · Shipping</span>
             </div>
           </div>
           <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
@@ -254,7 +254,7 @@ function Index() {
         <section className="px-4 lg:px-8 pt-8 pb-6">
           <div className="relative border border-border bg-background rounded-xl p-8 lg:p-12 overflow-hidden">
             <span className="absolute top-4 right-6 lg:right-12 text-[140px] lg:text-[200px] leading-none font-extrabold text-foreground/[0.04] select-none pointer-events-none">
-              神龙
+              神龍
             </span>
             <div className="relative max-w-2xl">
               <span className="inline-block px-2 py-1 bg-foreground text-background text-[10px] font-mono mb-4 rounded-sm">
@@ -266,7 +266,7 @@ function Index() {
               <p className="text-sm lg:text-base text-muted-foreground max-w-lg mb-6">
                 {currentBrand
                   ? `Direct procurement pipeline · ${sorted.length} reference(s) in stock.`
-                  : "Direct procurement from our Guangzhou & Yiwu hubs. Click any product to order via WhatsApp."}
+                  : "Direct procurement from our Tokyo & Osaka hubs. Click any product to order via WhatsApp."}
               </p>
               <div className="flex flex-wrap items-center gap-3">
                 <a
@@ -285,8 +285,70 @@ function Index() {
           </div>
         </section>
 
+        {/* Mobile brand chip bar — full catalog access without opening the drawer */}
+        <div className="lg:hidden sticky top-14 z-20 bg-background border-b border-border">
+          <div className="flex gap-2 overflow-x-auto px-4 py-2 no-scrollbar">
+            <button
+              onClick={() => setBrandId(null)}
+              className={`shrink-0 px-3 py-1.5 text-xs font-semibold rounded-full border transition ${
+                !brandId
+                  ? "bg-foreground text-background border-foreground"
+                  : "bg-background text-foreground border-border hover:border-foreground/40"
+              }`}
+            >
+              All
+            </button>
+            {brands.map((b) => {
+              const active = brandId === b.id;
+              return (
+                <button
+                  key={b.id}
+                  onClick={() => setBrandId(b.id)}
+                  className={`shrink-0 px-3 py-1.5 text-xs font-semibold rounded-full border transition whitespace-nowrap ${
+                    active
+                      ? "bg-foreground text-background border-foreground"
+                      : "bg-background text-foreground border-border hover:border-foreground/40"
+                  }`}
+                >
+                  {b.name}
+                </button>
+              );
+            })}
+          </div>
+          {brandId && brandCats.length > 0 && (
+            <div className="flex gap-1.5 overflow-x-auto px-4 pb-2 no-scrollbar border-t border-border/60 pt-2">
+              <button
+                onClick={() => setCategoryId(null)}
+                className={`shrink-0 px-2.5 py-1 text-[11px] font-mono uppercase tracking-widest rounded-md border transition ${
+                  !categoryId
+                    ? "bg-accent/10 text-accent border-accent/40"
+                    : "bg-background text-muted-foreground border-border"
+                }`}
+              >
+                All cats
+              </button>
+              {brandCats.map((c) => {
+                const active = categoryId === c.id;
+                return (
+                  <button
+                    key={c.id}
+                    onClick={() => setCategoryId(c.id)}
+                    className={`shrink-0 px-2.5 py-1 text-[11px] font-mono uppercase tracking-widest rounded-md border transition whitespace-nowrap ${
+                      active
+                        ? "bg-accent/10 text-accent border-accent/40"
+                        : "bg-background text-muted-foreground border-border"
+                    }`}
+                  >
+                    {c.name}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
         {/* Filter bar */}
-        <div className="sticky top-14 z-20 bg-surface-muted/95 backdrop-blur border-y border-border px-4 lg:px-8 py-3 flex flex-wrap gap-2 items-center">
+        <div className="sticky top-14 lg:top-14 z-20 bg-surface-muted/95 backdrop-blur border-y border-border px-4 lg:px-8 py-3 flex flex-wrap gap-2 items-center">
           <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-muted-foreground mr-2">
             Sort
           </span>
@@ -306,7 +368,7 @@ function Index() {
             <select
               value={categoryId ?? ""}
               onChange={(e) => setCategoryId(e.target.value || null)}
-              className="bg-background border border-border text-xs font-medium rounded-md px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-accent"
+              className="hidden lg:block bg-background border border-border text-xs font-medium rounded-md px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-accent"
             >
               <option value="">All categories</option>
               {brandCats.map((c) => (
@@ -363,7 +425,7 @@ function Index() {
         </section>
 
         <footer className="bg-background border-t border-border px-4 lg:px-8 py-6 flex flex-wrap items-center justify-between gap-3 text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
-          <span>© SHENLONG MARKET · 神龙市场</span>
+          <span>© SHENLONG MARKET · 神龍市場</span>
           <span>All orders via WhatsApp</span>
         </footer>
       </main>
