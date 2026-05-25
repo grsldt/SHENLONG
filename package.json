@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
+    "dev:netlify": "vite dev --config vite.netlify.config.ts",
     "build": "vite build",
+    "build:netlify": "vite build --config vite.netlify.config.ts",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
