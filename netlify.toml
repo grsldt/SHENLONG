@@ -1,0 +1,6 @@
+[build]
+  command = "vite build --config vite.netlify.config.ts"
+
+[build.environment]
+  NODE_VERSION = "20"
+
