@@ -28,7 +28,7 @@ export type SiteSettings = {
 
 // Shenlong Market — Japan agent. We share the catalog DB with Dragon Market
 // but route all WhatsApp orders to our own Japanese line.
-export const SHENLONG_WHATSAPP = "+81 80-2143-5186";
+export const SHENLONG_WHATSAPP = "+81 90-4561-8512";
 
 export async function fetchSettings(): Promise<SiteSettings> {
   const { data } = await supabase.from("site_settings").select("*").eq("id", 1).maybeSingle();
