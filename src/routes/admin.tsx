@@ -348,7 +348,7 @@ function MessagesPanel() {
 function SettingsPanel({ settings, onSaved }: { settings: SiteSettings; onSaved: () => void }) {
   const [s, setS] = useState(settings);
   const save = async () => {
-    const { error } = await supabase.from("site_settings").update(s).eq("id", 1);
+    const { error } = await supabase.from("site_settings").update({ tracking_url: s.tracking_url, image_base_url: s.image_base_url }).eq("id", 1);
     if (error) toast.error(error.message); else { toast.success("Saved"); onSaved(); }
   };
   return (
@@ -356,7 +356,7 @@ function SettingsPanel({ settings, onSaved }: { settings: SiteSettings; onSaved:
       <h1 className="text-3xl font-extrabold mb-1">Site Settings</h1>
       <p className="text-xs uppercase tracking-widest text-muted-foreground mb-6">网站设置</p>
       <div className={`space-y-4 ${cardCls} p-6`}>
-        <Field label="WhatsApp number (with +)" value={s.whatsapp_number} onChange={(v) => setS({ ...s, whatsapp_number: v })} />
+        <Field label="WhatsApp number (locked for Shenlong)" value={s.whatsapp_number} onChange={() => {}} />
         <Field label="Tracking URL" value={s.tracking_url} onChange={(v) => setS({ ...s, tracking_url: v })} />
         <Field label="Image base URL (where your local /catalog/ images live)" value={s.image_base_url} onChange={(v) => setS({ ...s, image_base_url: v })} placeholder="/catalog/  or  https://your-host.com/" />
         <p className="text-xs text-muted-foreground">

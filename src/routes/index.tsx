@@ -10,6 +10,7 @@ import {
   fetchCategories,
   fetchProducts,
   fetchSettings,
+  SHENLONG_WHATSAPP,
 } from "@/lib/catalog";
 import { ProductCard } from "@/components/catalog/ProductCard";
 import { ProductModal } from "@/components/catalog/ProductModal";
@@ -38,7 +39,7 @@ function Index() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [settings, setSettings] = useState<SiteSettings>({
-    whatsapp_number: "+12532237370",
+    whatsapp_number: SHENLONG_WHATSAPP,
     tracking_url: "https://neocartrige.com",
     image_base_url: "",
   });

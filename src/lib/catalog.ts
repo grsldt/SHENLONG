@@ -26,8 +26,7 @@ export type SiteSettings = {
   image_base_url: string;
 };
 
-// Shenlong Market — Japan agent. We share the catalog DB with Dragon Market
-// but route all WhatsApp orders to our own Japanese line.
+// Shenlong Market — Japan agent. Keep this number separate from Dragon Market.
 export const SHENLONG_WHATSAPP = "+819045618512";
 
 export async function fetchSettings(): Promise<SiteSettings> {
