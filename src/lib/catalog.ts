@@ -35,10 +35,6 @@ export async function fetchSettings(): Promise<SiteSettings> {
   return { ...base, whatsapp_number: SHENLONG_WHATSAPP };
 }
 
-export function lockShenlongWhatsapp(settings: SiteSettings): SiteSettings {
-  return { ...settings, whatsapp_number: SHENLONG_WHATSAPP };
-}
-
 export async function fetchBrands(): Promise<Brand[]> {
   const { data, error } = await supabase.from("brands").select("*").order("sort_order").order("name");
   if (error) throw error;
