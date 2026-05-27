@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import {
   Brand, Category, Product, SiteSettings,
   fetchBrands, fetchCategories, fetchProducts, fetchSettings,
-  resolveImageUrl, formatPrice, lockShenlongWhatsapp,
+  resolveImageUrl, formatPrice,
 } from "@/lib/catalog";
 import { toast, Toaster } from "sonner";
 import { Plus, Trash2, LogOut, Upload, X, ChevronUp, ChevronDown, Settings as SettingsIcon, Mail, Menu } from "lucide-react";
@@ -348,7 +348,7 @@ function MessagesPanel() {
 function SettingsPanel({ settings, onSaved }: { settings: SiteSettings; onSaved: () => void }) {
   const [s, setS] = useState(settings);
   const save = async () => {
-    const { error } = await supabase.from("site_settings").update(lockShenlongWhatsapp(s)).eq("id", 1);
+    const { error } = await supabase.from("site_settings").update({ tracking_url: s.tracking_url, image_base_url: s.image_base_url }).eq("id", 1);
     if (error) toast.error(error.message); else { toast.success("Saved"); onSaved(); }
   };
   return (
