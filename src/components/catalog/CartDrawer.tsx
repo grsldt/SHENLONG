@@ -56,7 +56,7 @@ export const CartDrawer = ({ open, onClose, settings, brandLookup }: Props) => {
     });
     if (total > 0) lines.push("", `Estimated total: ${formatPrice(total, "USD")}`);
     lines.push("", "Thanks!");
-    window.open(buildWhatsappUrl(settings.whatsapp_number, lines.join("\n")), "_blank", "noopener");
+    window.open(buildWhatsappUrl(lines.join("\n")), "_blank", "noopener");
   };
 
   if (!open) return null;

@@ -21,19 +21,19 @@ export type Product = {
 };
 
 export type SiteSettings = {
-  whatsapp_number: string;
   tracking_url: string;
   image_base_url: string;
 };
 
-// Shenlong Market — Japan agent. Keep this number separate from Dragon Market.
+// Shenlong Market's contact details are intentionally local to this project.
+// Never read or write the shared site_settings WhatsApp field: Dragon Market
+// uses a different US number.
 export const SHENLONG_WHATSAPP = "+819045618512";
-
-export async function fetchSettings(): Promise<SiteSettings> {
-  const { data } = await supabase.from("site_settings").select("*").eq("id", 1).maybeSingle();
-  const base = (data as SiteSettings | null) ?? { whatsapp_number: SHENLONG_WHATSAPP, tracking_url: "https://neocartrige.com", image_base_url: "" };
-  return { ...base, whatsapp_number: SHENLONG_WHATSAPP };
-}
+export const SHENLONG_WHATSAPP_DISPLAY = "+81 90-4561-8512";
+export const SHENLONG_SETTINGS: SiteSettings = {
+  tracking_url: "https://neocartrige.com",
+  image_base_url: "",
+};
 
 export async function fetchBrands(): Promise<Brand[]> {
   const { data, error } = await supabase.from("brands").select("*").order("sort_order").order("name");
@@ -93,9 +93,9 @@ export function defaultSizesFor(categoryName?: string | null): string[] {
   return [];
 }
 
-export function buildWhatsappUrl(phone: string, message: string): string {
-  const num = phone.replace(/[^\d]/g, "");
-  return `https://wa.me/${num}?text=${encodeURIComponent(message)}`;
+export function buildWhatsappUrl(message = ""): string {
+  const num = SHENLONG_WHATSAPP.replace(/[^\d]/g, "");
+  return message ? `https://wa.me/${num}?text=${encodeURIComponent(message)}` : `https://wa.me/${num}`;
 }
 
 export function formatPrice(price: number | null | undefined, currency: string = "USD"): string {

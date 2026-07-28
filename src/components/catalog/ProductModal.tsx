@@ -69,7 +69,7 @@ export const ProductModal = ({ product, brandName, categoryName, settings, onClo
     if (size) lines.push(`• Size: ${size}`);
     if (!product.whatsapp_only && product.price) lines.push(`• Price: ${formatPrice(product.price, product.currency)}`);
     lines.push("", "Thanks!");
-    window.open(buildWhatsappUrl(settings.whatsapp_number, lines.join("\n")), "_blank", "noopener");
+    window.open(buildWhatsappUrl(lines.join("\n")), "_blank", "noopener");
   };
 
   const share = async () => {

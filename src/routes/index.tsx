@@ -9,8 +9,8 @@ import {
   fetchBrands,
   fetchCategories,
   fetchProducts,
-  fetchSettings,
-  SHENLONG_WHATSAPP,
+  buildWhatsappUrl,
+  SHENLONG_SETTINGS,
 } from "@/lib/catalog";
 import { ProductCard } from "@/components/catalog/ProductCard";
 import { ProductModal } from "@/components/catalog/ProductModal";
@@ -38,11 +38,7 @@ function Index() {
   const [brands, setBrands] = useState<Brand[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
-  const [settings, setSettings] = useState<SiteSettings>({
-    whatsapp_number: SHENLONG_WHATSAPP,
-    tracking_url: "https://neocartrige.com",
-    image_base_url: "",
-  });
+  const settings: SiteSettings = SHENLONG_SETTINGS;
   const [brandId, setBrandId] = useState<string | null>(null);
   const [categoryId, setCategoryId] = useState<string | null>(null);
   const [search, setSearch] = useState("");
@@ -56,10 +52,9 @@ function Index() {
   const cart = useCart();
 
   useEffect(() => {
-    Promise.all([fetchBrands(), fetchCategories(), fetchSettings()]).then(([b, c, s]) => {
+    Promise.all([fetchBrands(), fetchCategories()]).then(([b, c]) => {
       setBrands(b);
       setCategories(c);
-      setSettings(s);
     });
   }, []);
 
@@ -241,7 +236,7 @@ function Index() {
               {sorted.length} items
             </span>
             <a
-              href={`https://wa.me/${settings.whatsapp_number.replace(/[^\d]/g, "")}`}
+              href={buildWhatsappUrl()}
               target="_blank"
               rel="noopener"
               className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-widest bg-foreground text-background px-3 py-1.5 rounded-full hover:bg-accent transition"
@@ -271,7 +266,7 @@ function Index() {
               </p>
               <div className="flex flex-wrap items-center gap-3">
                 <a
-                  href={`https://wa.me/${settings.whatsapp_number.replace(/[^\d]/g, "")}`}
+                  href={buildWhatsappUrl()}
                   target="_blank"
                   rel="noopener"
                   className="bg-accent text-accent-foreground px-6 py-3 text-xs font-bold uppercase tracking-widest rounded-md hover:brightness-110 transition flex items-center gap-2"
