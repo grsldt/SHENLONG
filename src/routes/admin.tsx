@@ -3,8 +3,8 @@ import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import {
   Brand, Category, Product, SiteSettings,
-  fetchBrands, fetchCategories, fetchProducts, fetchSettings,
-  resolveImageUrl, formatPrice,
+  fetchBrands, fetchCategories, fetchProducts,
+  resolveImageUrl, formatPrice, SHENLONG_SETTINGS, SHENLONG_WHATSAPP_DISPLAY,
 } from "@/lib/catalog";
 import { toast, Toaster } from "sonner";
 import { Plus, Trash2, LogOut, Upload, X, ChevronUp, ChevronDown, Settings as SettingsIcon, Mail, Menu } from "lucide-react";
@@ -94,7 +94,7 @@ function AdminPage() {
   const [brands, setBrands] = useState<Brand[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
-  const [settings, setSettings] = useState<SiteSettings | null>(null);
+  const settings: SiteSettings = SHENLONG_SETTINGS;
 
   const [brandId, setBrandId] = useState<string | null>(null);
   const [categoryId, setCategoryId] = useState<string | null>(null);
@@ -121,8 +121,8 @@ function AdminPage() {
   }, [navigate]);
 
   const reload = useCallback(async () => {
-    const [b, c, s] = await Promise.all([fetchBrands(), fetchCategories(), fetchSettings()]);
-    setBrands(b); setCategories(c); setSettings(s);
+    const [b, c] = await Promise.all([fetchBrands(), fetchCategories()]);
+    setBrands(b); setCategories(c);
   }, []);
 
   useEffect(() => { if (isAdmin) reload(); }, [isAdmin, reload]);
@@ -249,7 +249,7 @@ VALUES (
 
       <main className="flex-1 p-4 md:p-6 overflow-x-hidden min-w-0">
         {view === "settings" && settings ? (
-          <SettingsPanel settings={settings} onSaved={reload} />
+          <SettingsPanel />
         ) : view === "messages" ? (
           <MessagesPanel />
         ) : (
@@ -345,24 +345,18 @@ function MessagesPanel() {
 }
 
 // ============== Settings panel ==============
-function SettingsPanel({ settings, onSaved }: { settings: SiteSettings; onSaved: () => void }) {
-  const [s, setS] = useState(settings);
-  const save = async () => {
-    const { error } = await supabase.from("site_settings").update({ tracking_url: s.tracking_url, image_base_url: s.image_base_url }).eq("id", 1);
-    if (error) toast.error(error.message); else { toast.success("Saved"); onSaved(); }
-  };
+function SettingsPanel() {
   return (
     <div className="max-w-xl">
       <h1 className="text-3xl font-extrabold mb-1">Site Settings</h1>
       <p className="text-xs uppercase tracking-widest text-muted-foreground mb-6">网站设置</p>
       <div className={`space-y-4 ${cardCls} p-6`}>
-        <Field label="WhatsApp number (locked for Shenlong)" value={s.whatsapp_number} onChange={() => {}} />
-        <Field label="Tracking URL" value={s.tracking_url} onChange={(v) => setS({ ...s, tracking_url: v })} />
-        <Field label="Image base URL (where your local /catalog/ images live)" value={s.image_base_url} onChange={(v) => setS({ ...s, image_base_url: v })} placeholder="/catalog/  or  https://your-host.com/" />
+        <Field label="Shenlong WhatsApp number (project-only)" value={SHENLONG_WHATSAPP_DISPLAY} onChange={() => {}} />
+        <Field label="Tracking URL" value={SHENLONG_SETTINGS.tracking_url} onChange={() => {}} />
+        <Field label="Image base URL" value={SHENLONG_SETTINGS.image_base_url || "/catalog/"} onChange={() => {}} />
         <p className="text-xs text-muted-foreground">
-          Leave the image base URL empty to use <code className="bg-surface-muted px-1 rounded">/catalog/</code> at your site root.
+          These settings belong only to Shenlong and are never read from or written to Dragon Market's shared settings.
         </p>
-        <button onClick={save} className={`${primaryBtn} px-6 py-2.5`}>Save</button>
       </div>
     </div>
   );
