@@ -30,9 +30,14 @@ export type SiteSettings = {
 // uses a different US number.
 export const SHENLONG_WHATSAPP = "+819045618512";
 export const SHENLONG_WHATSAPP_DISPLAY = "+81 90-4561-8512";
+// Catalog images live in the shared Supabase "catalog" bucket. Most rows in
+// product_images store a relative path (e.g. "Acne Studio/t_shirt/1/x.jpeg"),
+// so this base must stay set or every legacy image 404s.
+export const SHENLONG_IMAGE_BASE_URL =
+  "https://womcbdzlygudpgqauaht.supabase.co/storage/v1/object/public/catalog/";
 export const SHENLONG_SETTINGS: SiteSettings = {
   tracking_url: "https://neocartrige.com",
-  image_base_url: "",
+  image_base_url: SHENLONG_IMAGE_BASE_URL,
 };
 
 export async function fetchBrands(): Promise<Brand[]> {
