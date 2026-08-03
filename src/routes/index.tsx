@@ -11,6 +11,7 @@ import {
   fetchProducts,
   buildWhatsappUrl,
   SHENLONG_SETTINGS,
+  SHENLONG_WHATSAPP_DISPLAY,
 } from "@/lib/catalog";
 import { ProductCard } from "@/components/catalog/ProductCard";
 import { ProductModal } from "@/components/catalog/ProductModal";
