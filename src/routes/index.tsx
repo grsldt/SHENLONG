@@ -279,7 +279,7 @@ function Index() {
                   Or call/WhatsApp: <span className="text-foreground font-bold">{SHENLONG_WHATSAPP_DISPLAY}</span>
                 </span>
                 <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-                  · Reply < 10 min
+                  · Reply &lt; 10 min
                 </span>
               </div>
             </div>
