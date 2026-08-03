@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Product, SiteSettings, buildWhatsappUrl, formatPrice, resolveImageUrl } from "@/lib/catalog";
+import { Product, SiteSettings, buildWhatsappUrl, formatPrice, resolveImageUrl, SHENLONG_WHATSAPP_DISPLAY } from "@/lib/catalog";
 import { supabase } from "@/integrations/supabase/client";
 import { X, Trash2, MessageCircle, ShoppingBag, Minus, Plus } from "lucide-react";
 import { useScrollLock } from "@/hooks/useScrollLock";

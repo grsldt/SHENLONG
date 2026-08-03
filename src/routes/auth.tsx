@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast, Toaster } from "sonner";
 import { ArrowLeft, Lock, MessageCircle, Send } from "lucide-react";
-import { buildWhatsappUrl } from "@/lib/catalog";
+import { buildWhatsappUrl, SHENLONG_WHATSAPP_DISPLAY } from "@/lib/catalog";
 
 type Mode = "contact" | "signin" | "forgot";
 
