@@ -1,4 +1,4 @@
-import { Product, SiteSettings, resolveImageUrl, thumbUrl, buildWhatsappUrl, formatPrice, defaultSizesFor } from "@/lib/catalog";
+import { Product, SiteSettings, resolveImageUrl, thumbUrl, buildWhatsappUrl, formatPrice, defaultSizesFor, SHENLONG_WHATSAPP_DISPLAY } from "@/lib/catalog";
 import { useEffect, useRef, useState } from "react";
 import { X, ChevronLeft, ChevronRight, MessageCircle, Share2, ShoppingBag, Check } from "lucide-react";
 import { toast } from "sonner";
