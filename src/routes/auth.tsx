@@ -118,13 +118,18 @@ function AuthPage() {
                 </button>
               </form>
 
-              <div className="mt-5 pt-4 border-t border-border flex items-center justify-between text-xs">
-                <a href={buildWhatsappUrl()} target="_blank" rel="noopener" className="text-accent font-bold uppercase tracking-widest flex items-center gap-1.5 hover:opacity-80">
-                  <MessageCircle size={14} /> Or chat on WhatsApp
-                </a>
-                <button onClick={() => setMode("signin")} className="text-muted-foreground hover:text-accent uppercase tracking-widest flex items-center gap-1">
-                  <Lock size={11} /> Admin
-                </button>
+              <div className="mt-5 pt-4 border-t border-border">
+                <div className="flex items-center justify-between text-xs mb-3">
+                  <a href={buildWhatsappUrl()} target="_blank" rel="noopener" className="text-accent font-bold uppercase tracking-widest flex items-center gap-1.5 hover:opacity-80">
+                    <MessageCircle size={14} /> Or chat on WhatsApp
+                  </a>
+                  <button onClick={() => setMode("signin")} className="text-muted-foreground hover:text-accent uppercase tracking-widest flex items-center gap-1">
+                    <Lock size={11} /> Admin
+                  </button>
+                </div>
+                <p className="text-[11px] font-mono text-muted-foreground text-center">
+                  Phone / WhatsApp: <span className="text-foreground font-bold">{SHENLONG_WHATSAPP_DISPLAY}</span>
+                </p>
               </div>
             </>
           ) : (
