@@ -1,13 +1,14 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { ReviewsPanel } from "@/components/admin/ReviewsPanel";
 import {
   Brand, Category, Product, SiteSettings,
   fetchBrands, fetchCategories, fetchProducts,
   resolveImageUrl, formatPrice, SHENLONG_SETTINGS, SHENLONG_WHATSAPP_DISPLAY,
 } from "@/lib/catalog";
 import { toast, Toaster } from "sonner";
-import { Plus, Trash2, LogOut, Upload, X, ChevronUp, ChevronDown, Settings as SettingsIcon, Mail, Menu } from "lucide-react";
+import { Plus, Trash2, LogOut, Upload, X, ChevronUp, ChevronDown, Settings as SettingsIcon, Mail, Menu, Star } from "lucide-react";
 import { useScrollLock } from "@/hooks/useScrollLock";
 
 export const Route = createFileRoute("/admin")({
@@ -98,7 +99,7 @@ function AdminPage() {
 
   const [brandId, setBrandId] = useState<string | null>(null);
   const [categoryId, setCategoryId] = useState<string | null>(null);
-  const [view, setView] = useState<"products" | "messages" | "settings">("products");
+  const [view, setView] = useState<"products" | "messages" | "settings" | "reviews">("products");
   const [unread, setUnread] = useState(0);
   const [navOpen, setNavOpen] = useState(false);
   const [showAddBrand, setShowAddBrand] = useState(false);
@@ -216,6 +217,10 @@ VALUES (
             <span><Mail size={11} className="inline mr-1.5" />Messages</span>
             {unread > 0 && <span className="bg-accent text-accent-foreground text-[10px] font-extrabold px-1.5 py-0.5 rounded-full">{unread}</span>}
           </button>
+          <button onClick={() => { setView("reviews"); setNavOpen(false); }}
+            className={`w-full text-left px-3 py-2.5 text-xs font-bold uppercase tracking-widest border-b border-border ${view === "reviews" ? "bg-foreground text-background" : "hover:bg-surface-muted"}`}>
+            <Star size={11} className="inline mr-1.5" />Reviews
+          </button>
           <button onClick={() => { setView("settings"); setNavOpen(false); }}
             className={`w-full text-left px-3 py-2.5 text-xs font-bold uppercase tracking-widest border-b border-border ${view === "settings" ? "bg-foreground text-background" : "hover:bg-surface-muted"}`}>
             <SettingsIcon size={11} className="inline mr-1.5" />Settings
@@ -248,7 +253,9 @@ VALUES (
       </aside>
 
       <main className="flex-1 p-4 md:p-6 overflow-x-hidden min-w-0">
-        {view === "settings" && settings ? (
+        {view === "reviews" ? (
+          <ReviewsPanel />
+        ) : view === "settings" && settings ? (
           <SettingsPanel />
         ) : view === "messages" ? (
           <MessagesPanel />
