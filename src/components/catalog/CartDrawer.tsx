@@ -133,6 +133,9 @@ export const CartDrawer = ({ open, onClose, settings, brandLookup }: Props) => {
             <button onClick={orderAll} className="w-full bg-[#25D366] text-white font-bold uppercase tracking-widest py-3.5 rounded-md flex items-center justify-center gap-2 hover:brightness-110">
               <MessageCircle size={18} /> Order all via WhatsApp
             </button>
+            <p className="text-[11px] font-mono text-muted-foreground text-center">
+              Phone / WhatsApp: <span className="text-foreground font-bold">{SHENLONG_WHATSAPP_DISPLAY}</span>
+            </p>
           </div>
         )}
       </aside>
