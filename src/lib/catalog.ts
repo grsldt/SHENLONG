@@ -109,3 +109,40 @@ export function formatPrice(price: number | null | undefined, currency: string =
   if (currency === "EUR") return `${price}€`;
   return `${symbol}${price}`;
 }
+
+// ============== Customer reviews (Shenlong only) ==============
+// Review photos live in a Shenlong-only folder of the shared "product-images"
+// bucket. Dragon Market never reads this prefix, so the two sites stay separate.
+export const SHENLONG_REVIEWS_PREFIX = "shenlong-reviews";
+
+export type Review = { name: string; path: string; url: string; createdAt: string | null };
+
+export async function fetchReviews(): Promise<Review[]> {
+  const { data, error } = await supabase.storage
+    .from("product-images")
+    .list(SHENLONG_REVIEWS_PREFIX, { limit: 200, sortBy: { column: "created_at", order: "desc" } });
+  if (error) return [];
+  return (data ?? [])
+    .filter((f) => f.name && !f.name.startsWith("."))
+    .map((f) => {
+      const path = `${SHENLONG_REVIEWS_PREFIX}/${f.name}`;
+      return {
+        name: f.name,
+        path,
+        url: supabase.storage.from("product-images").getPublicUrl(path).data.publicUrl,
+        createdAt: (f as any).created_at ?? null,
+      };
+    });
+}
+
+export async function uploadReview(file: File): Promise<void> {
+  const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
+  const path = `${SHENLONG_REVIEWS_PREFIX}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+  const { error } = await supabase.storage.from("product-images").upload(path, file, { upsert: false });
+  if (error) throw error;
+}
+
+export async function deleteReview(path: string): Promise<void> {
+  const { error } = await supabase.storage.from("product-images").remove([path]);
+  if (error) throw error;
+}
