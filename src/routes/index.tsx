@@ -15,6 +15,7 @@ import {
 import { ProductCard } from "@/components/catalog/ProductCard";
 import { ProductModal } from "@/components/catalog/ProductModal";
 import { CartDrawer } from "@/components/catalog/CartDrawer";
+import { ReviewsStrip } from "@/components/catalog/ReviewsStrip";
 import { useCart } from "@/hooks/useCart";
 import { Search, ShoppingBag, Menu, X, MessageCircle } from "lucide-react";
 
@@ -280,6 +281,8 @@ function Index() {
             </div>
           </div>
         </section>
+
+        <ReviewsStrip />
 
         {/* Mobile brand chip bar — full catalog access without opening the drawer */}
         <div className="lg:hidden sticky top-14 z-20 bg-background border-b border-border">
