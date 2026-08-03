@@ -232,6 +232,11 @@ export const ProductModal = ({ product, brandName, categoryName, settings, onClo
               {inCart ? <><Check size={16} /> Add more</> : <><ShoppingBag size={16} /> Add</>}
             </button>
           </div>
+          <div className="shrink-0 border-t border-border py-2 text-center">
+            <span className="text-[11px] font-mono text-muted-foreground">
+              Phone / WhatsApp: <span className="text-foreground font-bold">{SHENLONG_WHATSAPP_DISPLAY}</span>
+            </span>
+          </div>
         </div>
       </div>
     </div>
