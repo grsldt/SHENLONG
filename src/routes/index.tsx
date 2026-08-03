@@ -266,7 +266,7 @@ function Index() {
                   ? `Direct procurement pipeline · ${sorted.length} reference(s) in stock.`
                   : "Direct procurement from our Tokyo & Osaka hubs. Click any product to order via WhatsApp."}
               </p>
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-col items-start gap-3">
                 <a
                   href={buildWhatsappUrl()}
                   target="_blank"
@@ -275,8 +275,11 @@ function Index() {
                 >
                   <MessageCircle size={14} /> Contact an agent
                 </a>
+                <span className="text-[11px] font-mono text-muted-foreground tracking-wide">
+                  Or call/WhatsApp: <span className="text-foreground font-bold">{SHENLONG_WHATSAPP_DISPLAY}</span>
+                </span>
                 <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-                  · Reply &lt; 10 min
+                  · Reply < 10 min
                 </span>
               </div>
             </div>
