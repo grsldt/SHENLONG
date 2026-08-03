@@ -13,13 +13,10 @@ export function ReviewsStrip() {
 
   return (
     <section className="px-4 lg:px-8 pb-2">
-      <div className="flex items-baseline gap-2 mb-2">
+      <div className="mb-2">
         <h3 className="text-[10px] font-mono font-bold uppercase tracking-widest text-foreground">
           Are we legit?
         </h3>
-        <span className="text-[10px] font-mono text-muted-foreground">
-          {items.length} client reviews
-        </span>
       </div>
       <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1 snap-x">
         {items.map((r) => (

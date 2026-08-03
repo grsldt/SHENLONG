@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Product, SiteSettings, buildWhatsappUrl, formatPrice, resolveImageUrl } from "@/lib/catalog";
+import { Product, SiteSettings, buildWhatsappUrl, formatPrice, resolveImageUrl, SHENLONG_WHATSAPP_DISPLAY } from "@/lib/catalog";
 import { supabase } from "@/integrations/supabase/client";
 import { X, Trash2, MessageCircle, ShoppingBag, Minus, Plus } from "lucide-react";
 import { useScrollLock } from "@/hooks/useScrollLock";
@@ -133,6 +133,9 @@ export const CartDrawer = ({ open, onClose, settings, brandLookup }: Props) => {
             <button onClick={orderAll} className="w-full bg-[#25D366] text-white font-bold uppercase tracking-widest py-3.5 rounded-md flex items-center justify-center gap-2 hover:brightness-110">
               <MessageCircle size={18} /> Order all via WhatsApp
             </button>
+            <p className="text-[11px] font-mono text-muted-foreground text-center">
+              Phone / WhatsApp: <span className="text-foreground font-bold">{SHENLONG_WHATSAPP_DISPLAY}</span>
+            </p>
           </div>
         )}
       </aside>

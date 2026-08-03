@@ -1,4 +1,4 @@
-import { Product, SiteSettings, resolveImageUrl, thumbUrl, buildWhatsappUrl, formatPrice, defaultSizesFor } from "@/lib/catalog";
+import { Product, SiteSettings, resolveImageUrl, thumbUrl, buildWhatsappUrl, formatPrice, defaultSizesFor, SHENLONG_WHATSAPP_DISPLAY } from "@/lib/catalog";
 import { useEffect, useRef, useState } from "react";
 import { X, ChevronLeft, ChevronRight, MessageCircle, Share2, ShoppingBag, Check } from "lucide-react";
 import { toast } from "sonner";
@@ -231,6 +231,11 @@ export const ProductModal = ({ product, brandName, categoryName, settings, onClo
             <button onClick={addToCart} className={`px-5 font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-1.5 transition ${inCart ? "bg-accent text-accent-foreground hover:brightness-110" : "bg-foreground text-background hover:bg-accent"}`}>
               {inCart ? <><Check size={16} /> Add more</> : <><ShoppingBag size={16} /> Add</>}
             </button>
+          </div>
+          <div className="shrink-0 border-t border-border py-2 text-center">
+            <span className="text-[11px] font-mono text-muted-foreground">
+              Phone / WhatsApp: <span className="text-foreground font-bold">{SHENLONG_WHATSAPP_DISPLAY}</span>
+            </span>
           </div>
         </div>
       </div>
