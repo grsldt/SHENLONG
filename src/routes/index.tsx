@@ -17,6 +17,7 @@ import { ProductCard } from "@/components/catalog/ProductCard";
 import { ProductModal } from "@/components/catalog/ProductModal";
 import { CartDrawer } from "@/components/catalog/CartDrawer";
 import { ReviewsStrip } from "@/components/catalog/ReviewsStrip";
+import { CloserPopup } from "@/components/catalog/CloserPopup";
 import { useCart } from "@/hooks/useCart";
 import { Search, ShoppingBag, Menu, X, MessageCircle } from "lucide-react";
 
