@@ -455,6 +455,7 @@ function Index() {
         onClose={() => setOpen(null)}
       />
       <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} settings={settings} brandLookup={brandLookup} />
+      <CloserPopup />
       <Toaster position="bottom-center" richColors />
     </div>
   );
